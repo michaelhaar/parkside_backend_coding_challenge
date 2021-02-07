@@ -3,3 +3,6 @@ djangorestframework
 
 # for API documentation
 drf-yasg
+
+# for static files in production environment
+whitenoise

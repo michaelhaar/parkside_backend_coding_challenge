@@ -1,3 +1,4 @@
+from django.test import TestCase, Client
 from rest_framework import status
 from rest_framework.test import APITestCase
 from .models import Robot, DanceOff
@@ -261,3 +262,11 @@ class PostDanceOffTestCase(APITestCase):
         self.assert_bad_danceoff_create_request(url, post_data)
         self.assert_bad_danceoff_create_request(url, {"abc"})
         self.assert_bad_danceoff_create_request(url, ["a", "b", "c"])
+
+
+class GetDocsTestCase(TestCase):
+    def test_get_docs(self):
+        # Issue get request
+        response = Client().get('/docs/')
+        # Check that the response is 200 OK.
+        self.assertEqual(response.status_code, status.HTTP_200_OK)

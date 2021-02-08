@@ -3,8 +3,6 @@ Production Settings for Heroku
 """
 
 import environ
-
-# If using in your own project, update the project namespace below
 from config.settings.base import *
 
 env = environ.Env(

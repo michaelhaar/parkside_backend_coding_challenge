@@ -50,40 +50,40 @@ _Git-Flow example (source: https://nvie.com/posts/a-successful-git-branching-mod
 
 ### Project Architecture 📂
 
-I decided to use [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/) for this project (mainly because already I used these frameworks in some other projects).
+I decided to use [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/) for this project (mainly because I already used these frameworks in some other projects).
 
 This leads to the following folder structure:
 
 ```
-parkside_backend_coding_challenge	// project root dir
+parkside_backend_coding_challenge    // project root dir
 |
-|- README.md					// main doc file
-|- requirements.txt				// contains python dependencies
-|- Procfile						// Heroku file
-|- runtime.txt					// Heroku runtime file
-|- /.vscode						// settings for my texteditor
-|- /.github						// github workflow files
-|- /.git						// used by git
-|- /docs						// my doc folder
-`- /django_webserver			// the Django Project
-   |- manage.py					// Django’s main file
-   |- .gitignore				// excludes files from git
-   |- /config					// Django root dir
-   |  |- urls.py				// defines the url routing
-   |  |- /settings				// Django settings for dev/prod
-   `- /robodanceapi				// Django app for the API
-      |- models.py				// defines database objects
-	  |- test.py				// contains the unit tests
-	  |- urls.py				// defines the url routing
-	  |- views.py				// request -> response
-	  |- serializers.py			// convert input to db model
+|- README.md                    // main doc file
+|- requirements.txt             // contains python dependencies
+|- Procfile                     // Heroku file
+|- runtime.txt                  // Heroku runtime file
+|- /.vscode                     // settings for my texteditor
+|- /.github                     // github workflow files
+|- /.git                        // used by git
+|- /docs                        // my doc folder
+`- /django_webserver            // the Django Project
+   |- manage.py                 // Django’s main file
+   |- .gitignore                // excludes files from git
+   |- /config                   // Django root dir
+   |  |- urls.py                // defines the url routing
+   |  |- /settings              // Django settings for dev/prod
+   `- /robodanceapi             // Django app for the API
+      |- models.py              // defines database objects
+      |- test.py                // contains the unit tests
+      |- urls.py                // defines the url routing
+      |- views.py               // request -> response
+      |- serializers.py         // convert input to db model
 ```
 
 ### Unit Tests and Continuous Testing
 
 I wrote some test cases in order to validate, that my API works as expected.
 
-You can run the test cases with the following command:
+We can run the test cases with the following command:
 
 ```bash
 # setup dev environment first! (see Usage section)
@@ -93,6 +93,9 @@ python django_webserver/manage.py test
 ```
 
 > Note: I've also set up a [Github Workflow](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions) to run the unit tests automatically if a new commit is made to the `master` or the `develop` branch. This is done by adding the `.github/workflows/django.yml` file and is called [Continuous Testing](https://en.wikipedia.org/wiki/Continuous_testing).
+
+![Github workflow preview](docs/images/github_workflow_preview.png)  
+_Github workflow preview_
 
 ### API Documentation 📖
 

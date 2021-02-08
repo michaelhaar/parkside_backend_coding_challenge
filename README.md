@@ -25,6 +25,105 @@ Please checkout the [original project description from Parkside](docs/Parkside_C
 
 ## My Solution
 
+### Honor Code
+
+> I did not cheat or plagiarize the work of others during the whole project. If I used work (e.g. copying code) from others, I gave proper attribution to the author/source.
+
+### Version Control
+
+- I used [git](https://git-scm.com/) and [Github](https://github.com/) as version control system.
+- I followed the `Git-Flow` design pattern
+  - branches: feature branches, develop, release, master
+  - I used `Github issues` to track all the required features of this project and added their IDs to the feature branch name
+- I tried to follow the [Udacity Git Commit Message Style Guide](http://udacity.github.io/git-styleguide/)
+
+![Git Flow Example](docs/images/git_flow.png)
+_Git-Flow example (source: https://nvie.com/posts/a-successful-git-branching-model/ )_
+
+### Project Architecture
+
+I decided to use [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/) for this project (mainly because already I used these frameworks in some other projects).
+
+This leads to the following folder structure:
+
+```
+parkside_backend_coding_challenge	// project root dir
+|
+|- README.md					// main doc file
+|- requirements.txt				// list python dependencies
+|- Procfile						// Heroku file
+|- runtime.txt					// Heroku runtime file
+|- /.vscode						// settings for my texteditor
+|- /.github						// github workflow files
+|- /.git						// used by git
+|- /docs						// my doc folder
+`- /django_webserver			// the Django Project
+   |- manage.py					// Django’s main file
+   |- .gitignore				// exclude files from git
+   |- /config					// Django root dir
+   |  |- urls.py				// defines the url routing
+   |  |- /settings				// Django settings for dev/prod
+   `- /robodanceapi				// Django app for the API
+      |- models.py				// defines database objects
+	  |- test.py				// contains the unit tests
+	  |- urls.py				// defines the url routing
+	  |- views.py				// request -> response
+	  |- serializers.py			// convert input to db model
+```
+
+### Unit Tests and Continuous Testing
+
+I wrote some test cases in order to validate, that my code works as expected.
+
+You can run the test cases with the following commands:
+
+```bash
+# clone the repo from github
+git clone https://github.com/michaelhaar/parkside_backend_coding_challenge.git
+
+# install the python dependencies
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+
+# run all unit tests
+python django_webserver/manage.py test
+```
+
+> Note: I've also set up a [Github Workflow](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions) to run the unit tests automatically if a new commit is made to the `master` or the `develop` branch. This is done by adding the `.github/workflows/django.yml` file and is called [Continuous Testing](https://en.wikipedia.org/wiki/Continuous_testing).
+
+### API Documentation
+
+I used [drf-yasg](https://github.com/axnsan12/drf-yasg) to generate a Swagger/OpenAPI 2.0 documentation. It exposes 3 documentation endpoints:
+
+- A JSON view of our API specification at `/docs.json`
+- A YAML view of our API specification at `/docs.yaml`
+- A swagger-ui view of your API specification at `/docs/`
+
+![API documentation preview](docs/images/API_documentation_preview.png)
+_API documentation preview_
+
+### Continuous Delivery and Hosting
+
+The web app is hosted on Heroku and will automatically deploy the new app if you make a new commit to the master branch. This is called [Continuous Delivery](https://en.wikipedia.org/wiki/Continuous_delivery)
+
+The following endpoints might be interesting:
+
+- Documentation:  
+  https://sheltered-refuge-49689.herokuapp.com/docs/
+- API:  
+  https://sheltered-refuge-49689.herokuapp.com/api/
+
+To implement this feature I followed the [From Project to Productionized with Python](https://blog.heroku.com/from-project-to-productionized-python) tutorial from the official Heroku website.
+
+> Note: I ran into some issues:
+>
+> 1. `runtime.txt` wasn't working.  
+>    I had to use `python-3.8.7` instead of `python-3.8.2`, which was used in the tutorial (see: [Supported runtimes](https://devcenter.heroku.com/articles/python-support#supported-runtimes))
+> 2. Wrong `BASE_DIR` after doing the `Modularize your settings` step.  
+>    I updated the `BASE_DIR` from `Path(__file__).resolve().parent.parent` to `Path(__file__).resolve().parent.parent.parent`
+> 3. collection of static files wasn't working.  
+>    I had to add `STATIC_ROOT = BASE_DIR.joinpath('staticfiles')` to the settings base file (see: [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets))
+
 ## Outlook
 
 ### What I would do better if I have more time?

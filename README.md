@@ -59,7 +59,7 @@ parkside_backend_coding_challenge	// project root dir
 |- /docs						// my doc folder
 `- /django_webserver			// the Django Project
    |- manage.py					// Django’s main file
-   |- .gitignore				// exclude files from git
+   |- .gitignore				// excludes files from git
    |- /config					// Django root dir
    |  |- urls.py				// defines the url routing
    |  |- /settings				// Django settings for dev/prod
@@ -75,15 +75,10 @@ parkside_backend_coding_challenge	// project root dir
 
 I wrote some test cases in order to validate, that my code works as expected.
 
-You can run the test cases with the following commands:
+You can run the test cases with the following command:
 
 ```bash
-# clone the repo from github
-git clone https://github.com/michaelhaar/parkside_backend_coding_challenge.git
-
-# install the python dependencies
-python -m pip install --upgrade pip
-pip install -r requirements.txt
+# setup dev environment first! (see Usage section)
 
 # run all unit tests
 python django_webserver/manage.py test
@@ -109,9 +104,11 @@ The web app is hosted on Heroku and will automatically deploy the new app if you
 The following endpoints might be interesting:
 
 - Documentation:  
-  https://sheltered-refuge-49689.herokuapp.com/docs/
+  https://floating-wildwood-42925.herokuapp.com/docs/
 - API:  
-  https://sheltered-refuge-49689.herokuapp.com/api/
+  https://floating-wildwood-42925.herokuapp.com/api/
+
+![Heroku Dashboard](docs/images/Heroku_dashboard.png)
 
 To implement this feature I followed the [From Project to Productionized with Python](https://blog.heroku.com/from-project-to-productionized-python) tutorial from the official Heroku website.
 
@@ -123,6 +120,35 @@ To implement this feature I followed the [From Project to Productionized with Py
 >    I updated the `BASE_DIR` from `Path(__file__).resolve().parent.parent` to `Path(__file__).resolve().parent.parent.parent`
 > 3. collection of static files wasn't working.  
 >    I had to add `STATIC_ROOT = BASE_DIR.joinpath('staticfiles')` to the settings base file (see: [Django and Static Assets](https://devcenter.heroku.com/articles/django-assets))
+
+## Usage (Dev Setup Guide)
+
+We can set up our local development environment on Ubuntu with the following commands:
+
+```bash
+# clone the repo from github
+git clone https://github.com/michaelhaar/parkside_backend_coding_challenge.git
+
+# install the python dependencies
+python -m pip install --upgrade pip
+sudo apt install libpq-dev python3-dev #needed for psycopg2
+cd parkside_backend_coding_challenge/
+pip install -r requirements.txt
+
+# Init the database
+python django_webserver/manage.py migrate
+```
+
+Next we can start our dev server by typing:
+
+```bash
+# start the local development server
+python django_webserver/manage.py runserver
+```
+
+Now we can open `http://localhost:8000/api/` in our Web browser. We should see something like this:
+
+![API endpoint view](docs/images/API_endpoint_view.png)
 
 ## Outlook
 

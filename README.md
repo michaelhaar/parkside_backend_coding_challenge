@@ -1,10 +1,18 @@
 # Parkside Robo-Dance Coding Challenge (Backend) 🤖
 
+## Live Demo
+
+- API: https://floating-wildwood-42925.herokuapp.com/api/
+- Documentation: https://floating-wildwood-42925.herokuapp.com/docs/
+
+![Robot Dance Gif](/docs/images/robot_dance.gif)  
+_Image Source: https://giphy.com/gifs/uofcalifornia-dancing-robot-robots-3o72F2gJOMNCsKobtK_
+
 ## Introduction
 
 This repository was part of my job application process at [Parkside](https://www.parkside-interactive.com/) and contains a simple REST API that shows my current skills and talent as well as my preferred work style. I was asked to built the backend for a **Robo-Dance** competition app.
 
-## Overview
+## Overview 🧑‍💻
 
 Robots love dancing and regularly battle each other in fabulous dance competitions. Goal of the project was to design a API for a Robo-Dance competition app in a way that a frontend application could consume it. Therefore I created two API endpoints with the following features:
 
@@ -21,7 +29,7 @@ Robots love dancing and regularly battle each other in fabulous dance competitio
   - receive all danceoffs
   - receive a specific danceoff
 
-Please checkout the [original project description from Parkside](docs/Parkside_Coding_Challenge_Backend.pdf) for more information.
+Please checkout the [official project description from Parkside](docs/Parkside_Coding_Challenge_Backend.pdf) for more information.
 
 ## My Solution
 
@@ -37,10 +45,10 @@ Please checkout the [original project description from Parkside](docs/Parkside_C
   - I used `Github issues` to track all the required features of this project and added their IDs to the feature branch name
 - I tried to follow the [Udacity Git Commit Message Style Guide](http://udacity.github.io/git-styleguide/)
 
-![Git Flow Example](docs/images/git_flow.png)
+![Git Flow Example](docs/images/git_flow.png)  
 _Git-Flow example (source: https://nvie.com/posts/a-successful-git-branching-model/ )_
 
-### Project Architecture
+### Project Architecture 📂
 
 I decided to use [Django](https://www.djangoproject.com/) and [Django REST Framework](https://www.django-rest-framework.org/) for this project (mainly because already I used these frameworks in some other projects).
 
@@ -50,7 +58,7 @@ This leads to the following folder structure:
 parkside_backend_coding_challenge	// project root dir
 |
 |- README.md					// main doc file
-|- requirements.txt				// list python dependencies
+|- requirements.txt				// contains python dependencies
 |- Procfile						// Heroku file
 |- runtime.txt					// Heroku runtime file
 |- /.vscode						// settings for my texteditor
@@ -73,7 +81,7 @@ parkside_backend_coding_challenge	// project root dir
 
 ### Unit Tests and Continuous Testing
 
-I wrote some test cases in order to validate, that my code works as expected.
+I wrote some test cases in order to validate, that my API works as expected.
 
 You can run the test cases with the following command:
 
@@ -86,7 +94,7 @@ python django_webserver/manage.py test
 
 > Note: I've also set up a [Github Workflow](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions) to run the unit tests automatically if a new commit is made to the `master` or the `develop` branch. This is done by adding the `.github/workflows/django.yml` file and is called [Continuous Testing](https://en.wikipedia.org/wiki/Continuous_testing).
 
-### API Documentation
+### API Documentation 📖
 
 I used [drf-yasg](https://github.com/axnsan12/drf-yasg) to generate a Swagger/OpenAPI 2.0 documentation. It exposes 3 documentation endpoints:
 
@@ -94,10 +102,10 @@ I used [drf-yasg](https://github.com/axnsan12/drf-yasg) to generate a Swagger/Op
 - A YAML view of our API specification at `/docs.yaml`
 - A swagger-ui view of your API specification at `/docs/`
 
-![API documentation preview](docs/images/API_documentation_preview.png)
+![API documentation preview](docs/images/API_documentation_preview.png)  
 _API documentation preview_
 
-### Continuous Delivery and Hosting
+### Continuous Delivery and Hosting 🚀
 
 The web app is hosted on Heroku and will automatically deploy the new app if you make a new commit to the master branch. This is called [Continuous Delivery](https://en.wikipedia.org/wiki/Continuous_delivery)
 
@@ -146,11 +154,11 @@ Next we can start our dev server by typing:
 python django_webserver/manage.py runserver
 ```
 
-Now we can open `http://localhost:8000/api/` in our Web browser. We should see something like this:
+Now we can open http://localhost:8000/api/ in our Web browser. We should see something like this:
 
 ![API endpoint view](docs/images/API_endpoint_view.png)
 
-## Outlook
+## Outlook 📈
 
 ### What I would do better if I have more time?
 

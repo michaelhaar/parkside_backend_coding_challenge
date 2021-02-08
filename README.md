@@ -27,6 +27,36 @@ Please checkout the [original project description from Parkside](docs/Parkside_C
 
 ## Outlook
 
+### What I would do better if I have more time?
+
+- discuss project requirements in more detail
+- add authorization and protect _create_ endpoints
+- add further validation for the danceoff _bulk_create_ endpoint and add more unit tests
+- provide a leaderboard feature
+
+### How would I set up the frontend app?
+
+First, I would try to define the requirements, which would probably give me something like this:
+
+- the user should be able to start a new competition.
+  - 10 distinct robots will be picked randomly
+  - robots will be split into two teams
+- the user should be able to start the competition.
+  - each robot battles one robot from the opponent team
+  - randomly choose a winner
+  - send results to the backend using the API
+
+Next, I would plan the architecture and the frameworks for the frontend. It would probably look like this:
+
+- inside the django project, create a new django app called `frontend`
+  - setup everything (urls, templates, static files, etc. )
+- use [React](https://reactjs.org/) (maybe also [Redux](https://redux.js.org/), [React Router](https://reactrouter.com/) and [Bootstrap](https://getbootstrap.com/)) to build the frontend application
+  - use [Axios](https://github.com/axios/axios) to make API calls
+  - use [webpack](https://webpack.js.org/) to compile the Javascript code
+- use Github `issues`, Git-Flow and feature branches to track the progress and organize my tasks
+- some UI/UX mockups might be helpful
+  - create the first drafts by hand and then use [Figma](https://www.figma.com/) for more details
+
 ## Used Frameworks, Libraries and APIs
 
 - **[Django](https://www.djangoproject.com/)**: web framework for perfectionists with deadlines.
